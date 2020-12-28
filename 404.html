@@ -1,0 +1,39 @@
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<script src="https://admin-simon.gitee.io/js_vecteezy/bodymovin.js"></script>
+<script src="https://admin-simon.gitee.io/js_vecteezy/data.js"></script>
+<div id="svgContainer"></div>
+<style>
+    html {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+    }
+
+<pre><code>body,
+html &#123;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+&#125;
+
+#svgContainer &#123;
+    width: 640px;
+    height: 512px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+&#125;</code></pre>
+<p></style></p>
+<script>
+    var svgContainer = document.getElementById('svgContainer');
+    var animItem = bodymovin.loadAnimation({
+        wrapper: svgContainer,
+        animType: 'svg',
+        loop: true,
+        animationData: JSON.parse(animationData)
+    });
+</script>

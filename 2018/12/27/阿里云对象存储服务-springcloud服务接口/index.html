@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aliatry.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}};
+  </script>
+<meta name="description" content="阿里云对象存储服务 springcloud服务接口本文章提供的是阿里云对象存储的核心示例代码 , 具体springcloud接口服务于最下面查看 示例下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里云对象存储服务 springcloud服务接口">
+<meta property="og:url" content="https://aliatry.com/2018/12/27/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1-springcloud%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3/index.html">
+<meta property="og:site_name" content="奇姆的博客">
+<meta property="og:description" content="阿里云对象存储服务 springcloud服务接口本文章提供的是阿里云对象存储的核心示例代码 , 具体springcloud接口服务于最下面查看 示例下载">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-27T04:09:59.000Z">
+<meta property="article:modified_time" content="2019-03-05T08:41:20.206Z">
+<meta property="article:author" content="Chim">
+<meta property="article:tag" content="springcloud">
+<meta property="article:tag" content="阿里云">
+<meta property="article:tag" content="oss">
+<meta property="article:tag" content="对象存储">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://aliatry.com/2018/12/27/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1-springcloud%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>阿里云对象存储服务 springcloud服务接口 | 奇姆的博客</title>
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb003a086e05b7ee761af0fe0f26acc6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="奇姆的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">奇姆的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1-springcloud%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">阿里云对象存储服务 springcloud服务接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%B8%8B%E8%BD%BD-1"><span class="nav-number">2.</span> <span class="nav-text">[示例下载] 1</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chim"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Chim</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">135</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/admin-SIMON" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;admin-SIMON" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:admin_simon@icloud.com" title="E-Mail → mailto:admin_simon@icloud.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://devdocs.io/" title="https:&#x2F;&#x2F;devdocs.io&#x2F;" rel="noopener" target="_blank">DevDocs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hengyunabc.github.io/" title="http:&#x2F;&#x2F;hengyunabc.github.io&#x2F;" rel="noopener" target="_blank">横云断岭</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aliatry.com/2018/12/27/%E9%98%BF%E9%87%8C%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1-springcloud%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇姆的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          阿里云对象存储服务 springcloud服务接口
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-12-27 12:09:59" itemprop="dateCreated datePublished" datetime="2018-12-27T12:09:59+08:00">2018-12-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-03-05 16:41:20" itemprop="dateModified" datetime="2019-03-05T16:41:20+08:00">2019-03-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%BF%E9%87%8C%E4%BA%91/" itemprop="url" rel="index"><span itemprop="name">阿里云</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%BF%E9%87%8C%E4%BA%91/oss/" itemprop="url" rel="index"><span itemprop="name">oss</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="阿里云对象存储服务-springcloud服务接口"><a href="#阿里云对象存储服务-springcloud服务接口" class="headerlink" title="阿里云对象存储服务 springcloud服务接口"></a>阿里云对象存储服务 springcloud服务接口</h1><p>本文章提供的是阿里云对象存储的核心示例代码 , 具体springcloud接口服务于最下面查看 <code>示例下载</code></p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 示例说明</span><br><span class="line"> *</span><br><span class="line"> * HelloOSS是OSS Java SDK的示例程序，您可以修改endpoint、accessKeyId、accessKeySecret、bucketName后直接运行。</span><br><span class="line"> * 运行方法请参考README。</span><br><span class="line"> *</span><br><span class="line"> * 本示例中的并不包括OSS Java SDK的所有功能，详细功能及使用方法，请参看“SDK手册 &gt; Java-SDK”，</span><br><span class="line"> * 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;preface.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;。</span><br><span class="line"> *</span><br><span class="line"> * 调用OSS Java SDK的方法时，抛出异常表示有错误发生；没有抛出异常表示成功执行。</span><br><span class="line"> * 当错误发生时，OSS Java SDK的方法会抛出异常，异常中包括错误码、错误信息，详细请参看“SDK手册 &gt; Java-SDK &gt; 异常处理”，</span><br><span class="line"> * 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;exception.html?spm&#x3D;5176.docoss&#x2F;api-reference&#x2F;error-response。</span><br><span class="line"> *</span><br><span class="line"> * OSS控制台可以直观的看到您调用OSS Java SDK的结果，OSS控制台地址是：https:&#x2F;&#x2F;oss.console.aliyun.com&#x2F;index#&#x2F;。</span><br><span class="line"> * OSS控制台使用方法请参看文档中心的“控制台用户指南”， 指南的来链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;getting-started&#x2F;get-started.html?spm&#x3D;5176.docoss&#x2F;user_guide。</span><br><span class="line"> *</span><br><span class="line"> * OSS的文档中心地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;user_guide&#x2F;overview.html。</span><br><span class="line"> * OSS Java SDK的文档地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;install.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk。</span><br><span class="line"> *</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">package com.aliyun.oss.demo;</span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.ByteArrayInputStream;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import com.aliyun.oss.ClientException;</span><br><span class="line">import com.aliyun.oss.OSSClient;</span><br><span class="line">import com.aliyun.oss.OSSException;</span><br><span class="line">import com.aliyun.oss.model.BucketInfo;</span><br><span class="line">import com.aliyun.oss.model.OSSObject;</span><br><span class="line">import com.aliyun.oss.model.OSSObjectSummary;</span><br><span class="line">import com.aliyun.oss.model.ObjectListing;</span><br><span class="line"></span><br><span class="line">import org.apache.log4j.Logger;</span><br><span class="line">import org.apache.log4j.PropertyConfigurator;</span><br><span class="line"></span><br><span class="line">public class HelloOSS &#123;</span><br><span class="line">    static Logger logger &#x3D; Logger.getLogger(HelloOSS.class);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; endpoint是访问OSS的域名。如果您已经在OSS的控制台上 创建了Bucket，请在控制台上查看域名。</span><br><span class="line">    &#x2F;&#x2F; 如果您还没有创建Bucket，endpoint选择请参看文档中心的“开发人员指南 &gt; 基本概念 &gt; 访问域名”，</span><br><span class="line">    &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;user_guide&#x2F;oss_concept&#x2F;endpoint.html?spm&#x3D;5176.docoss&#x2F;user_guide&#x2F;endpoint_region</span><br><span class="line">    &#x2F;&#x2F; endpoint的格式形如“http:&#x2F;&#x2F;oss-cn-hangzhou.aliyuncs.com&#x2F;”，注意http:&#x2F;&#x2F;后不带bucket名称，</span><br><span class="line">    &#x2F;&#x2F; 比如“http:&#x2F;&#x2F;bucket-name.oss-cn-hangzhou.aliyuncs.com”，是错误的endpoint，请去掉其中的“bucket-name”。</span><br><span class="line">    private static String endpoint &#x3D; &quot;http:&#x2F;&#x2F;oss-cn-hangzhou.aliyuncs.com&quot;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; accessKeyId和accessKeySecret是OSS的访问密钥，您可以在控制台上创建和查看，</span><br><span class="line">    &#x2F;&#x2F; 创建和查看访问密钥的链接地址是：https:&#x2F;&#x2F;ak-console.aliyun.com&#x2F;#&#x2F;。</span><br><span class="line">    &#x2F;&#x2F; 注意：accessKeyId和accessKeySecret前后都没有空格，从控制台复制时请检查并去除多余的空格。</span><br><span class="line">    private static String accessKeyId &#x3D; &quot;&lt;yourAccessKeyId&gt;&quot;;</span><br><span class="line">    private static String accessKeySecret &#x3D; &quot;&lt;yourAccessKeySecret&gt;&quot;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Bucket用来管理所存储Object的存储空间，详细描述请参看“开发人员指南 &gt; 基本概念 &gt; OSS基本概念介绍”。</span><br><span class="line">    &#x2F;&#x2F; Bucket命名规范如下：只能包括小写字母，数字和短横线（-），必须以小写字母或者数字开头，长度必须在3-63字节之间。</span><br><span class="line">    private static String bucketName &#x3D; &quot;&lt;yourBucketName&gt;&quot;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Object是OSS存储数据的基本单元，称为OSS的对象，也被称为OSS的文件。详细描述请参看“开发人员指南 &gt; 基本概念 &gt; OSS基本概念介绍”。</span><br><span class="line">    &#x2F;&#x2F; Object命名规范如下：使用UTF-8编码，长度必须在1-1023字节之间，不能以“&#x2F;”或者“\”字符开头。</span><br><span class="line">    private static String firstKey &#x3D; &quot;my-first-key&quot;;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 日志配置，OSS Java SDK使用log4j记录错误信息。示例程序会在工程目录下生成“oss-demo.log”日志文件，默认日志级别是INFO。</span><br><span class="line">        &#x2F;&#x2F; 日志的配置文件是“conf&#x2F;log4j.properties”，如果您不需要日志，可以没有日志配置文件和下面的日志配置。</span><br><span class="line">        PropertyConfigurator.configure(&quot;conf&#x2F;log4j.properties&quot;);</span><br><span class="line"></span><br><span class="line">        logger.info(&quot;Started&quot;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 生成OSSClient，您可以指定一些参数，详见“SDK手册 &gt; Java-SDK &gt; 初始化”，</span><br><span class="line">        &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;init.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;get-start</span><br><span class="line">        OSSClient ossClient &#x3D; new OSSClient(endpoint, accessKeyId, accessKeySecret);</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 判断Bucket是否存在。详细请参看“SDK手册 &gt; Java-SDK &gt; 管理Bucket”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_bucket.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;init</span><br><span class="line">            if (ossClient.doesBucketExist(bucketName)) &#123;</span><br><span class="line">                System.out.println(&quot;您已经创建Bucket：&quot; + bucketName + &quot;。&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                System.out.println(&quot;您的Bucket不存在，创建Bucket：&quot; + bucketName + &quot;。&quot;);</span><br><span class="line">                &#x2F;&#x2F; 创建Bucket。详细请参看“SDK手册 &gt; Java-SDK &gt; 管理Bucket”。</span><br><span class="line">                &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_bucket.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;init</span><br><span class="line">                ossClient.createBucket(bucketName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 查看Bucket信息。详细请参看“SDK手册 &gt; Java-SDK &gt; 管理Bucket”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_bucket.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;init</span><br><span class="line">            BucketInfo info &#x3D; ossClient.getBucketInfo(bucketName);</span><br><span class="line">            System.out.println(&quot;Bucket &quot; + bucketName + &quot;的信息如下：&quot;);</span><br><span class="line">            System.out.println(&quot;\t数据中心：&quot; + info.getBucket().getLocation());</span><br><span class="line">            System.out.println(&quot;\t创建时间：&quot; + info.getBucket().getCreationDate());</span><br><span class="line">            System.out.println(&quot;\t用户标志：&quot; + info.getBucket().getOwner());</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 把字符串存入OSS，Object的名称为firstKey。详细请参看“SDK手册 &gt; Java-SDK &gt; 上传文件”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;upload_object.html?spm&#x3D;5176.docoss&#x2F;user_guide&#x2F;upload_object</span><br><span class="line">            InputStream is &#x3D; new ByteArrayInputStream(&quot;Hello OSS&quot;.getBytes());</span><br><span class="line">            ossClient.putObject(bucketName, firstKey, is);</span><br><span class="line">            System.out.println(&quot;Object：&quot; + firstKey + &quot;存入OSS成功。&quot;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 下载文件。详细请参看“SDK手册 &gt; Java-SDK &gt; 下载文件”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;download_object.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_object</span><br><span class="line">            OSSObject ossObject &#x3D; ossClient.getObject(bucketName, firstKey);</span><br><span class="line">            InputStream inputStream &#x3D; ossObject.getObjectContent();</span><br><span class="line">            StringBuilder objectContent &#x3D; new StringBuilder();</span><br><span class="line">            BufferedReader reader &#x3D; new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">            while (true) &#123;</span><br><span class="line">                String line &#x3D; reader.readLine();</span><br><span class="line">                if (line &#x3D;&#x3D; null)</span><br><span class="line">                    break;</span><br><span class="line">                objectContent.append(line);</span><br><span class="line">            &#125;</span><br><span class="line">            inputStream.close();</span><br><span class="line">            System.out.println(&quot;Object：&quot; + firstKey + &quot;的内容是：&quot; + objectContent);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 文件存储入OSS，Object的名称为fileKey。详细请参看“SDK手册 &gt; Java-SDK &gt; 上传文件”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;upload_object.html?spm&#x3D;5176.docoss&#x2F;user_guide&#x2F;upload_object</span><br><span class="line">            String fileKey &#x3D; &quot;README.md&quot;;</span><br><span class="line">            ossClient.putObject(bucketName, fileKey, new File(&quot;README.md&quot;));</span><br><span class="line">            System.out.println(&quot;Object：&quot; + fileKey + &quot;存入OSS成功。&quot;);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 查看Bucket中的Object。详细请参看“SDK手册 &gt; Java-SDK &gt; 管理文件”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_object.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_bucket</span><br><span class="line">            ObjectListing objectListing &#x3D; ossClient.listObjects(bucketName);</span><br><span class="line">            List&lt;OSSObjectSummary&gt; objectSummary &#x3D; objectListing.getObjectSummaries();</span><br><span class="line">            System.out.println(&quot;您有以下Object：&quot;);</span><br><span class="line">            for (OSSObjectSummary object : objectSummary) &#123;</span><br><span class="line">                System.out.println(&quot;\t&quot; + object.getKey());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 删除Object。详细请参看“SDK手册 &gt; Java-SDK &gt; 管理文件”。</span><br><span class="line">            &#x2F;&#x2F; 链接地址是：https:&#x2F;&#x2F;help.aliyun.com&#x2F;document_detail&#x2F;oss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_object.html?spm&#x3D;5176.docoss&#x2F;sdk&#x2F;java-sdk&#x2F;manage_bucket</span><br><span class="line">            ossClient.deleteObject(bucketName, firstKey);</span><br><span class="line">            System.out.println(&quot;删除Object：&quot; + firstKey + &quot;成功。&quot;);</span><br><span class="line">            ossClient.deleteObject(bucketName, fileKey);</span><br><span class="line">            System.out.println(&quot;删除Object：&quot; + fileKey + &quot;成功。&quot;);</span><br><span class="line"></span><br><span class="line">        &#125; catch (OSSException oe) &#123;</span><br><span class="line">            oe.printStackTrace();</span><br><span class="line">        &#125; catch (ClientException ce) &#123;</span><br><span class="line">            ce.printStackTrace();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            ossClient.shutdown();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        logger.info(&quot;Completed&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="示例下载-1"><a href="#示例下载-1" class="headerlink" title="[示例下载] 1"></a>[示例下载] <a target="_blank" rel="noopener" href="https://gitee.com/admin-simon/aliyun_oss_service">1</a></h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Chim 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="Chim 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/springcloud/" rel="tag"># springcloud</a>
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
+              <a href="/tags/oss/" rel="tag"># oss</a>
+              <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/" rel="tag"># 对象存储</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2018/12/25/Maven%E4%BB%93%E5%BA%93%E4%BF%AE%E6%94%B9%E9%98%BF%E9%87%8C%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93/" rel="prev" title="Maven仓库修改阿里中央仓库">
+                  <i class="fa fa-chevron-left"></i> Maven仓库修改阿里中央仓库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/01/14/%E7%83%AD%E9%83%A8%E7%BD%B2%E5%9C%A8Eclipse%E5%92%8CIDEA%E9%87%8C%E9%9D%A2%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="热部署在Eclipse和IDEA里面的使用">
+                  热部署在Eclipse和IDEA里面的使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC8zNTg0NS8xMjM4MQ=="></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备18157056号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chim</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "2018/12/27/阿里云对象存储服务-springcloud服务接口/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

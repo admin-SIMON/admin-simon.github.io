@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aliatry.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":true,"color":"#222","save":"manual"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}};
+  </script>
+<meta name="description" content="mappedBymappedBy用于指定具有双向关系的两个实体中。哪个实体是被关联处理的。 只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性@OneToMany(mappedBy&#x3D;“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)关系的拥有方(Many的一方)负">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hibernate中的mappedBy和注解@JoinColumn">
+<meta property="og:url" content="https://aliatry.com/2017/06/06/Hibernate%E4%B8%AD%E7%9A%84mappedBy%E5%92%8C%E6%B3%A8%E8%A7%A3-JoinColumn/index.html">
+<meta property="og:site_name" content="奇姆的博客">
+<meta property="og:description" content="mappedBymappedBy用于指定具有双向关系的两个实体中。哪个实体是被关联处理的。 只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性@OneToMany(mappedBy&#x3D;“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)关系的拥有方(Many的一方)负">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-06-06T12:00:31.000Z">
+<meta property="article:modified_time" content="2019-10-12T06:02:53.082Z">
+<meta property="article:author" content="Chim">
+<meta property="article:tag" content="hibernate">
+<meta property="article:tag" content="mappedBy">
+<meta property="article:tag" content="JoinColumn">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://aliatry.com/2017/06/06/Hibernate%E4%B8%AD%E7%9A%84mappedBy%E5%92%8C%E6%B3%A8%E8%A7%A3-JoinColumn/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Hibernate中的mappedBy和注解@JoinColumn | 奇姆的博客</title>
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cb003a086e05b7ee761af0fe0f26acc6";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="奇姆的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">奇姆的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mappedBy"><span class="nav-number">1.</span> <span class="nav-text">mappedBy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E6%9C%89OneToOne-OneToMany-ManyToMany%E4%B8%8A%E6%89%8D%E6%9C%89mappedBy%E5%B1%9E%E6%80%A7%EF%BC%8CManyToOne%E4%B8%8D%E5%AD%98%E5%9C%A8%E8%AF%A5%E5%B1%9E%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OneToMany-mappedBy-%E2%80%9C%E7%94%B1One%E7%9A%84%E4%B8%80%E6%96%B9%E6%8C%87%E5%90%91Many%E7%9A%84%E4%B8%80%E6%96%B9%EF%BC%8C%E5%B9%B6%E4%B8%94%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%B1%9E%E6%80%A7%E5%BA%94%E8%AF%A5%E7%AD%89%E4%BA%8EMany%E7%9A%84%E4%B8%80%E6%96%B9%E4%B8%AD%E5%90%AB%E6%9C%89One%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%90%8D%EF%BC%8C%E5%90%A6%E5%88%99%E4%BC%9A%E5%87%BA%E9%94%99%E2%80%9D"><span class="nav-number">1.2.</span> <span class="nav-text">@OneToMany(mappedBy&#x3D;“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E6%8B%A5%E6%9C%89%E6%96%B9-Many%E7%9A%84%E4%B8%80%E6%96%B9-%E8%B4%9F%E8%B4%A3%E5%85%B3%E7%B3%BB%E7%9A%84%E7%BB%B4%E6%8A%A4%EF%BC%8C%E5%9C%A8%E6%8B%A5%E6%9C%89%E6%96%B9%E5%BB%BA%E7%AB%8B%E5%A4%96%E9%94%AE%E3%80%82%E6%89%80%E4%BB%A5%E7%94%A8%E5%88%B0-JoinColumn"><span class="nav-number">1.3.</span> <span class="nav-text">关系的拥有方(Many的一方)负责关系的维护，在拥有方建立外键。所以用到@JoinColumn</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JoinColumn"><span class="nav-number">2.</span> <span class="nav-text">JoinColumn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JoinColumn%E6%8C%87%E5%AE%9A%E4%BA%86Users%E9%80%9A%E8%BF%87%E5%A4%96%E9%94%AEu-id%E5%85%B3%E8%81%94%E5%88%B0%E5%BD%93%E5%89%8D%E7%9A%84user-id%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">@JoinColumn指定了Users通过外键u_id关联到当前的user_id。</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chim"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Chim</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">135</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/admin-SIMON" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;admin-SIMON" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:admin_simon@icloud.com" title="E-Mail → mailto:admin_simon@icloud.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://devdocs.io/" title="https:&#x2F;&#x2F;devdocs.io&#x2F;" rel="noopener" target="_blank">DevDocs</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hengyunabc.github.io/" title="http:&#x2F;&#x2F;hengyunabc.github.io&#x2F;" rel="noopener" target="_blank">横云断岭</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aliatry.com/2017/06/06/Hibernate%E4%B8%AD%E7%9A%84mappedBy%E5%92%8C%E6%B3%A8%E8%A7%A3-JoinColumn/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chim">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="奇姆的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hibernate中的mappedBy和注解@JoinColumn
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-06 20:00:31" itemprop="dateCreated datePublished" datetime="2017-06-06T20:00:31+08:00">2017-06-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2019-10-12 14:02:53" itemprop="dateModified" datetime="2019-10-12T14:02:53+08:00">2019-10-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hibernate/" itemprop="url" rel="index"><span itemprop="name">hibernate</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hibernate/%E6%B3%A8%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">注解</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="mappedBy"><a href="#mappedBy" class="headerlink" title="mappedBy"></a>mappedBy</h2><p>mappedBy用于指定具有双向关系的两个实体中。哪个实体是被关联处理的。</p>
+<h3 id="只有OneToOne-OneToMany-ManyToMany上才有mappedBy属性，ManyToOne不存在该属性"><a href="#只有OneToOne-OneToMany-ManyToMany上才有mappedBy属性，ManyToOne不存在该属性" class="headerlink" title="只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性"></a>只有OneToOne,OneToMany,ManyToMany上才有mappedBy属性，ManyToOne不存在该属性</h3><h3 id="OneToMany-mappedBy-“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”"><a href="#OneToMany-mappedBy-“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”" class="headerlink" title="@OneToMany(mappedBy=“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)"></a>@OneToMany(mappedBy=“由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名，否则会出错”)</h3><h3 id="关系的拥有方-Many的一方-负责关系的维护，在拥有方建立外键。所以用到-JoinColumn"><a href="#关系的拥有方-Many的一方-负责关系的维护，在拥有方建立外键。所以用到-JoinColumn" class="headerlink" title="关系的拥有方(Many的一方)负责关系的维护，在拥有方建立外键。所以用到@JoinColumn"></a>关系的拥有方(Many的一方)负责关系的维护，在拥有方建立外键。所以用到@JoinColumn</h3><a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.persistence.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Users</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//mappedBy由One的一方指向Many的一方，并且，这个属性应该等于Many的一方中含有One类的属性的对象名</span></span><br><span class="line">    <span class="meta">@OneToMany(targetEntity = House.class, mappedBy = &quot;user_id&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Set&lt;House&gt; houseSet;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JoinColumn"><a href="#JoinColumn" class="headerlink" title="JoinColumn"></a>JoinColumn</h2><h3 id="JoinColumn指定了Users通过外键u-id关联到当前的user-id。"><a href="#JoinColumn指定了Users通过外键u-id关联到当前的user-id。" class="headerlink" title="@JoinColumn指定了Users通过外键u_id关联到当前的user_id。"></a>@JoinColumn指定了Users通过外键u_id关联到当前的user_id。</h3><p>用@JoinColumn指向One的一个外键字段(数据库对应外键字段名)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.persistence.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Table</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">House</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Column</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToOne(targetEntity = Users.class)</span></span><br><span class="line">    <span class="meta">@JoinColumn(name = &quot;u_id&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Users user_id;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div></div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Chim 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="Chim 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hibernate/" rel="tag"># hibernate</a>
+              <a href="/tags/mappedBy/" rel="tag"># mappedBy</a>
+              <a href="/tags/JoinColumn/" rel="tag"># JoinColumn</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/06/06/Open-Session-In-View-%E6%A8%A1%E5%BC%8F/" rel="prev" title="Open Session In View 模式">
+                  <i class="fa fa-chevron-left"></i> Open Session In View 模式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/06/07/Struts2%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8C%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90/" rel="next" title="Struts2的配置和一个简单的例子">
+                  Struts2的配置和一个简单的例子 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC8zNTg0NS8xMjM4MQ=="></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备18157056号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chim</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "2017/06/06/Hibernate中的mappedBy和注解-JoinColumn/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
