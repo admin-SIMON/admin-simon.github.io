@@ -515,20 +515,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/mappedBy/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/JoinColumn/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/tags/idea/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -599,7 +585,49 @@
   </url>
   
   <url>
+    <loc>https://aliatry.com/tags/mappedBy/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/JoinColumn/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aliatry.com/tags/increment/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E4%BD%93%E7%B1%BB/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E6%BF%80%E6%B4%BB/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E6%B3%A8%E5%86%8C%E7%A0%81/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -641,27 +669,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/%E6%BF%80%E6%B4%BB/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E6%B3%A8%E5%86%8C%E7%A0%81/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/tags/Serializable/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -677,13 +684,6 @@
   
   <url>
     <loc>https://aliatry.com/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E4%BD%93%E7%B1%BB/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -746,6 +746,13 @@
   </url>
   
   <url>
+    <loc>https://aliatry.com/tags/%E6%A0%87%E7%AD%BE/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aliatry.com/tags/easyExcel/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -760,7 +767,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/%E6%A0%87%E7%AD%BE/</loc>
+    <loc>https://aliatry.com/tags/%E9%9B%86%E5%90%88/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -782,13 +789,6 @@
   
   <url>
     <loc>https://aliatry.com/tags/apt-get/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E9%9B%86%E5%90%88/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -907,6 +907,20 @@
   </url>
   
   <url>
+    <loc>https://aliatry.com/tags/RocketMQ/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aliatry.com/tags/SSR/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -922,20 +936,6 @@
   
   <url>
     <loc>https://aliatry.com/tags/VPS/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/RocketMQ/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1033,20 +1033,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/Action/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/tags/%E4%BC%A0%E5%80%BC/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/tags/Servlet-API/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1068,7 +1054,14 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/struts-xml/</loc>
+    <loc>https://aliatry.com/tags/Action/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E4%BC%A0%E5%80%BC/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1082,7 +1075,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/servlet/</loc>
+    <loc>https://aliatry.com/tags/struts-xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1096,13 +1089,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/centOS/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/tags/ubuntu/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1110,14 +1096,14 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://aliatry.com/tags/servlet/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/Nginx/</loc>
+    <loc>https://aliatry.com/tags/centOS/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1139,6 +1125,20 @@
   
   <url>
     <loc>https://aliatry.com/tags/jdk8/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/Nginx/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1208,13 +1208,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/JavaScript/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/tags/%E5%A4%9A%E5%86%85%E9%83%A8%E8%B5%84%E6%BA%90%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1250,14 +1243,21 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8E%A7%E5%88%B6%E5%8F%B0/</loc>
+    <loc>https://aliatry.com/tags/Kibana/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://aliatry.com/tags/Kibana/</loc>
+    <loc>https://aliatry.com/tags/JavaScript/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8E%A7%E5%88%B6%E5%8F%B0/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1448,13 +1448,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/http/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/hibernate/xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1469,14 +1462,21 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/hibernate/%E6%B3%A8%E8%A7%A3/</loc>
+    <loc>https://aliatry.com/categories/hibernate/%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/hibernate/%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84/</loc>
+    <loc>https://aliatry.com/categories/http/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/hibernate/%E6%B3%A8%E8%A7%A3/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1511,7 +1511,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/http/api%E7%BD%91%E5%85%B3%E8%AF%B7%E6%B1%82/</loc>
+    <loc>https://aliatry.com/categories/hibernate/xml/%E4%B8%BB%E9%94%AE/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1532,7 +1532,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/hibernate/xml/%E4%B8%BB%E9%94%AE/</loc>
+    <loc>https://aliatry.com/categories/idea/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E4%BD%93%E7%B1%BB/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1581,6 +1581,20 @@
   </url>
   
   <url>
+    <loc>https://aliatry.com/categories/http/api%E7%BD%91%E5%85%B3%E8%AF%B7%E6%B1%82/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aliatry.com/categories/idea/Serializable/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1589,20 +1603,6 @@
   
   <url>
     <loc>https://aliatry.com/categories/VPN/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/idea/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9E%E4%BD%93%E7%B1%BB/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1644,13 +1644,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/hexo/%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/idea/web-xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1658,7 +1651,14 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/linux/jdk8/</loc>
+    <loc>https://aliatry.com/categories/java/%E9%9B%86%E5%90%88/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/hexo/%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1666,20 +1666,6 @@
   
   <url>
     <loc>https://aliatry.com/categories/linux/mysql/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/linux/wget/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/java/%E9%9B%86%E5%90%88/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1707,35 +1693,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/JavaScript/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/springMVC/%E5%A4%9A%E5%86%85%E9%83%A8%E8%B5%84%E6%BA%90%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/linux/Redis/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/RocketMQ/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/maven/pom-xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1749,7 +1707,14 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/%E7%83%AD%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://aliatry.com/categories/JavaScript/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/maven/pom-xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1763,28 +1728,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/linux/elasticsearch/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/mybatis/mysql/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/linux/Logstash/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1806,6 +1750,13 @@
   
   <url>
     <loc>https://aliatry.com/categories/hibernate/session/filter/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/linux/Redis/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1840,13 +1791,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/struts2/struts-xml/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/struts2/idea/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1854,7 +1798,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/linux/maven/</loc>
+    <loc>https://aliatry.com/categories/struts2/struts-xml/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1868,7 +1812,21 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/linux/wget/java/</loc>
+    <loc>https://aliatry.com/categories/linux/maven/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/linux/jdk8/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/linux/wget/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1883,20 +1841,6 @@
   
   <url>
     <loc>https://aliatry.com/categories/springMVC/%E5%A4%9A%E5%86%85%E9%83%A8%E8%B5%84%E6%BA%90%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/%E5%86%85%E9%83%A8%E8%B5%84%E6%BA%90%E8%A7%86%E5%9B%BE%E8%A7%A3%E6%9E%90%E5%99%A8/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/RocketMQ/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8E%A7%E5%88%B6%E5%8F%B0/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aliatry.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/oss/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1931,7 +1875,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/linux/wget/java/jdk8/</loc>
+    <loc>https://aliatry.com/categories/linux/wget/java/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1952,6 +1896,55 @@
   </url>
   
   <url>
+    <loc>https://aliatry.com/categories/linux/wget/java/jdk8/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/RocketMQ/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/%E7%83%AD%E9%83%A8%E7%BD%B2/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/RocketMQ/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8E%A7%E5%88%B6%E5%8F%B0/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/linux/elasticsearch/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/linux/Logstash/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aliatry.com/categories/api/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1960,6 +1953,13 @@
   
   <url>
     <loc>https://aliatry.com/categories/mybatis/xml/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/%E9%98%BF%E9%87%8C%E4%BA%91/oss/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1980,13 +1980,6 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/api/markdown/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://aliatry.com/categories/WeChat/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1994,7 +1987,7 @@
   </url>
   
   <url>
-    <loc>https://aliatry.com/categories/Mahout/</loc>
+    <loc>https://aliatry.com/categories/api/markdown/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -2016,6 +2009,13 @@
   
   <url>
     <loc>https://aliatry.com/categories/mybatis/xml/%E6%98%A0%E5%B0%84%E9%85%8D%E7%BD%AE/%E5%8A%A8%E6%80%81SQL/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aliatry.com/categories/Mahout/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
